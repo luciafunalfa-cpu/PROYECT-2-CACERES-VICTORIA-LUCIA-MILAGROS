@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día Mamá Viviana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c8 50%, #c98ba8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Corazones flotantes de fondo */
+        .heart-bg {
+            position: absolute;
+            font-size: 30px;
+            color: rgba(139, 0, 0, 0.15);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card-container {
+            perspective: 1000px;
+            z-index: 10;
+        }
+
+        .card {
+            width: 450px;
+            height: 600px;
+            background: linear-gradient(145deg, #fff5f7 0%, #ffe8ed 100%);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(139, 0, 0, 0.3);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: cardEntrance 1s ease-out;
+            border: 3px solid #8b0000;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                transform: scale(0.5) rotateY(-180deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Decoración superior */
+        .card-decoration {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+        }
+
+        .heart-main {
+            font-size: 80px;
+            color: #8b0000;
+            animation: heartbeat 1.5s infinite;
+            filter: drop-shadow(0 5px 10px rgba(139, 0, 0, 0.3));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.15);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .card-content {
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #8b0000;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .name {
+            font-size: 52px;
+            color: #a0153e;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(160, 21, 62, 0.3);
+            animation: fadeInScale 1s ease-out 0.8s both;
+            font-style: italic;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .message {
+            font-size: 20px;
+            color: #6b2742;
+            line-height: 1.8;
+            margin: 30px 0;
+            margin-bottom: 80px;
+            font-style: italic;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .flowers {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            animation: growFlowers 1.5s ease-out 1.5s both;
+        }
+
+        @keyframes growFlowers {
+            from {
+                transform: translateX(-50%) scale(0) translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .sparkle:nth-child(1) { top: 150px; left: 50px; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 200px; right: 60px; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 350px; left: 70px; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 300px; right: 50px; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 450px; left: 100px; animation-delay: 0.8s; }
+        .sparkle:nth-child(6) { top: 400px; right: 90px; animation-delay: 1.2s; }
+
+        .corner-decoration {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.6;
+        }
+
+        .corner-decoration.top-left {
+            top: 15px;
+            left: 15px;
+            animation: rotate 4s linear infinite;
+        }
+
+        .corner-decoration.top-right {
+            top: 15px;
+            right: 15px;
+            animation: rotate 4s linear infinite reverse;
+        }
+
+        .corner-decoration.bottom-left {
+            bottom: 80px;
+            left: 15px;
+            animation: rotate 4s linear infinite;
+        }
+
+        .corner-decoration.bottom-right {
+            bottom: 80px;
+            right: 15px;
+            animation: rotate 4s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Corazones flotantes de fondo -->
+    <div class="heart-bg" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart-bg" style="left: 25%; animation-delay: 2s;">💖</div>
+    <div class="heart-bg" style="left: 40%; animation-delay: 4s;">❤️</div>
+    <div class="heart-bg" style="left: 60%; animation-delay: 1s;">💕</div>
+    <div class="heart-bg" style="left: 75%; animation-delay: 3s;">💖</div>
+    <div class="heart-bg" style="left: 90%; animation-delay: 5s;">❤️</div>
+
+    <div class="card-container">
+        <div class="card">
+            <!-- Corazón principal -->
+            <div class="card-decoration">
+                <div class="heart-main">💝</div>
+            </div>
+
+            <!-- Decoraciones de esquinas -->
+            <div class="corner-decoration top-left">🌸</div>
+            <div class="corner-decoration top-right">🌸</div>
+            <div class="corner-decoration bottom-left">🌺</div>
+            <div class="corner-decoration bottom-right">🌺</div>
+
+            <!-- Brillos -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+
+            <!-- Contenido -->
+            <div class="card-content">
+                <h1>Feliz Día</h1>
+                <div class="name">Viviana</div>
+                <div class="message">
+                    "Eres el corazón que late en cada rincón de nuestro hogar.<br>
+                    Tu amor infinito nos guía,<br>
+                    tu sonrisa nos ilumina,<br>
+                    y tu fortaleza nos inspira.<br>
+                    ¡Gracias por ser nuestra todo!"
+                </div>
+            </div>
+
+            <!-- Flores decorativas -->
+            <div class="flowers">🌹 🌷 🌹 🌷 🌹</div>
+        </div>
+    </div>
+
+    <script>
+        // Crear más corazones flotantes aleatoriamente
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-bg';
+            heart.textContent = ['❤️', '💖', '💕', '💝'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 15000);
+        }
+
+        // Generar corazones cada cierto tiempo
+        setInterval(createFloatingHeart, 3000);
+    </script>
+</body>
+</html>
